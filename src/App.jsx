@@ -1,13 +1,12 @@
 import Header from "./components/header";
-import Revenues from "./components/revenues";
-import LowerCalorieRevenues from "./components/lowerCalorieRevenues";
-import HigherCalorieRevenues from "./components/higherCalorieRevenues";
-import CheapiestRevenues from "./components/cheapiestRevenues";
-import EasiestRevenues from "./components/easiestRevenues";
-import MostCalorieDays from "./components/mostCalorieDays";
-import LessCalorieDays from "./components/lessCalorieDays";
-import Footer from "./components/footer";
-import { useState, useEffect } from "react";
+import Revenues from "./components/revenue/revenues";
+import LowerCalorieRevenues from "./components/revenue/lowerCalorieRevenues";
+import HigherCalorieRevenues from "./components/revenue/higherCalorieRevenues";
+import CheapiestRevenues from "./components/revenue/cheapiestRevenues";
+import EasiestRevenues from "./components/revenue/easiestRevenues";
+import MostCalorieDays from "./components/menu/mostCalorieDays";
+import LessCalorieDays from "./components/menu/lessCalorieDays";
+import { useState } from "react";
 
 export default function App() {
     const [data, setData] = useState("");
@@ -30,7 +29,6 @@ export default function App() {
                         <EasiestRevenues />
                     </>
                 )}
-                <Footer />
             </main>
         </>
     );

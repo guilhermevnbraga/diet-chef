@@ -24,11 +24,9 @@ export default function LessCalorieDays() {
         <div className="mb-12">
             <h1 className="font-bold text-5xl text-center mb-6">{`Dia${
                 lessCalorieDays.length > 1 ? "s" : ""
-            } com maior quantidade de calorias`}</h1>
+            } com menor quantidade de calorias`}</h1>
             <section
-                className={`grid grid-flow-col grid-cols-${
-                    lessCalorieDays.length > 4 ? "4" : lessCalorieDays.length
-                } gap-4 w-full p-3`}
+                className={`grid grid-flow-col grid-cols-4 gap-4 w-full p-3`}
             >
                 {lessCalorieDays.map((day, idx) => (
                     <Day day={day} idx={idx} key={idx} />

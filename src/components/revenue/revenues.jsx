@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Revenue from "./revenue";
-import Day from "./day";
+import Day from "../menu/day";
 
 export default function Revenues({ data }) {
     const [revenues, setRevenues] = useState([]);

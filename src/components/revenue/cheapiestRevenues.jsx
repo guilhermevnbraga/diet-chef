@@ -2,45 +2,41 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Revenue from "./revenue";
 
-export default function HigherCalorieRevenues() {
-    const [higherCalorieRevenues, setHigherCalorieRevenues] = useState([]);
+export default function CheapiestRevenues() {
+    const [cheapiestRevenues, setCheapiestRevenues] = useState([]);
     const [update, setUpdate] = useState(false);
 
     const handleClick = (idx) => {
-        const newRevenues = [...higherCalorieRevenues];
+        const newRevenues = [...cheapiestRevenues];
         newRevenues[idx].open = !newRevenues[idx].open;
-        setHigherCalorieRevenues(newRevenues);
+        setCheapiestRevenues(newRevenues);
         setUpdate(!update);
     };
 
-    async function fetchHigherCalorieRevenues() {
+    async function fetchCheapiestRevenues() {
         try {
             const response = await axios.get(
-                "http://localhost:3000/revenue/higherCalorieRevenues"
+                "http://localhost:3000/revenue/cheapiestRevenues"
             );
-            setHigherCalorieRevenues(response.data);
+            setCheapiestRevenues(response.data);
         } catch (error) {
             console.error("Erro ao buscar a receita com menor caloria:", error);
         }
     }
 
     useEffect(() => {
-        fetchHigherCalorieRevenues();
+        fetchCheapiestRevenues();
     }, []);
 
     return (
         <div className="mb-12">
             <h1 className="font-bold text-5xl text-center mb-6">{`Receita${
-                higherCalorieRevenues.length > 1 ? "s" : ""
-            } com maior quantidade de calorias`}</h1>
+                cheapiestRevenues.length > 1 ? "s" : ""
+            } com menor quantidade de ingredientes`}</h1>
             <section
-                className={`grid grid-flow-col grid-cols-${
-                    higherCalorieRevenues.length > 4
-                        ? "4"
-                        : higherCalorieRevenues.length
-                } gap-4 w-full p-3`}
+                className={`grid grid-flow-col grid-cols-4 gap-4 w-full p-3`}
             >
-                {higherCalorieRevenues.map((revenue, idx) => (
+                {cheapiestRevenues.map((revenue, idx) => (
                     <Revenue
                         revenue={revenue}
                         idx={idx}

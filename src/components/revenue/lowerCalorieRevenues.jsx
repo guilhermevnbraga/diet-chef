@@ -2,45 +2,41 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Revenue from "./revenue";
 
-export default function EasiestRevenues() {
-    const [easiestRevenues, setEasiestRevenues] = useState([]);
+export default function LowerCalorieRevenues() {
+    const [lowerCalorieRevenues, setLowerCalorieRevenues] = useState([]);
     const [update, setUpdate] = useState(false);
 
     const handleClick = (idx) => {
-        const newRevenues = [...easiestRevenues];
+        const newRevenues = [...lowerCalorieRevenues];
         newRevenues[idx].open = !newRevenues[idx].open;
-        setEasiestRevenues(newRevenues);
+        setLowerCalorieRevenues(newRevenues);
         setUpdate(!update);
     };
 
-    async function fetchEasiestRevenues() {
+    async function fetchLowerCalorieRevenues() {
         try {
             const response = await axios.get(
-                "http://localhost:3000/revenue/easiestRevenues"
+                "http://localhost:3000/revenue/lowerCalorieRevenues"
             );
-            setEasiestRevenues(response.data);
+            setLowerCalorieRevenues(response.data);
         } catch (error) {
             console.error("Erro ao buscar a receita com menor caloria:", error);
         }
     }
 
     useEffect(() => {
-        fetchEasiestRevenues();
+        fetchLowerCalorieRevenues();
     }, []);
 
     return (
         <div className="mb-12">
             <h1 className="font-bold text-5xl text-center mb-6">{`Receita${
-                easiestRevenues.length > 1 ? "s" : ""
-            } mais simples`}</h1>
+                lowerCalorieRevenues.length > 1 ? "s" : ""
+            } com menor quantidade de calorias`}</h1>
             <section
-                className={`grid grid-flow-col grid-cols-${
-                    easiestRevenues.length > 4
-                        ? "4"
-                        : easiestRevenues.length
-                } gap-4 w-full p-3`}
+                className={`grid grid-flow-col grid-cols-4 gap-4 w-full p-3`}
             >
-                {easiestRevenues.map((revenue, idx) => (
+                {lowerCalorieRevenues.map((revenue, idx) => (
                     <Revenue
                         revenue={revenue}
                         idx={idx}
