@@ -26,7 +26,7 @@ export default function App() {
     return (
         <>
             <main className="min-h-screen flex flex-col">
-                <Header setdata={setData} />
+                <Header setData={setData} />
                 <Revenues data={data} />
                 <Footer />
             </main>

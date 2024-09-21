@@ -16,12 +16,7 @@ export default function Header({ setData }) {
             const response = await axios.get(
                 `http://localhost:3000/revenue/name/${search.toLowerCase()}`
             );
-            setData((prevData) => {
-                const newData = { ...prevData };
-                delete newData.day;
-                newData.revenue = response.data;
-                return newData;
-            });
+            setData((prev) => ({ ...prev, revenue: response.data }));
         } catch (error) {
             console.error("Erro ao buscar receita:", error);
         }
@@ -32,12 +27,7 @@ export default function Header({ setData }) {
             const response = await axios.get(
                 `http://localhost:3000/menu/day/${search.toLowerCase()}`
             );
-            setData((prevData) => {
-                const newData = { ...prevData };
-                delete newData.revenue;
-                newData.day = response.data;
-                return newData;
-            });
+            setData((prev) => ({ ...prev, menu: response.data }));
         } catch (error) {
             console.error("Erro ao buscar dia:", error);
         }
@@ -84,7 +74,15 @@ export default function Header({ setData }) {
                             <button>Dia mais calórico</button>
                         </li>
                         <li>
-                            <button onClick={() => setDaySearch(!daySearch)}>
+                            <button
+                                onClick={() => {
+                                    setData((prev) => ({
+                                        ...prev,
+                                        daySearch: !daySearch,
+                                    }));
+                                    setDaySearch(!daySearch);
+                                }}
+                            >
                                 Pesquisar dia
                             </button>
                         </li>
