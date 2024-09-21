@@ -32,9 +32,8 @@ export default function Revenues({ data }) {
     }, []);
 
     useEffect(() => {
-        if (data.revenue) setRevenues(data.revenue);
-        console.log(data);
-        console.log(menu);
+        if (data.revenue) setRevenues(data.revenue)
+        if (data.menu) setMenu(data.menu)
     }, [data]);
 
     const handleClick = (idx) => {

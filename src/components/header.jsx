@@ -1,16 +1,16 @@
-import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import axios from "axios";
 
 export default function Header({ setData }) {
     const [daySearch, setDaySearch] = useState(false);
     const [search, setSearch] = useState("");
-    const [toggleSearch, setToggleSearch] = useState(false);
 
     const fetchRevenueSearch = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/revenue/name/${search.toLowerCase()}`
+                `http://localhost:3000/revenue${
+                    search && `/name/${search.toLowerCase()}`
+                }`
             );
             setData((prev) => ({ ...prev, revenue: response.data }));
         } catch (error) {
@@ -21,9 +21,12 @@ export default function Header({ setData }) {
     const fetchDaySearch = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:3000/menu/day/${search.toLowerCase()}`
+                `http://localhost:3000/menu${
+                    search && `/day/${search.toLowerCase()}`
+                }`
             );
             setData((prev) => ({ ...prev, menu: response.data }));
+            console.log(response.data);
         } catch (error) {
             console.error("Erro ao buscar dia:", error);
         }
