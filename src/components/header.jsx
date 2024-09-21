@@ -5,11 +5,7 @@ import axios from "axios";
 export default function Header({ setData }) {
     const [daySearch, setDaySearch] = useState(false);
     const [search, setSearch] = useState("");
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    const [toggleSearch, setToggleSearch] = useState(false);
 
     const fetchRevenueSearch = async () => {
         try {
@@ -49,46 +45,20 @@ export default function Header({ setData }) {
                     }
                 }}
             />
-            <nav className="flex items-center w-1/3 justify-end">
-                <button onClick={toggleMenu}>
-                    <Bars3Icon className="w-8 h-8"></Bars3Icon>
-                </button>
-                {isMenuOpen && (
-                    <ul className="bg-red-600 absolute top-12 right-0 w-48 p-3 text-center">
-                        <li className="shadow-[0_3px_0px_0px_rgba(0,0,0,0.1)]">
-                            <button>Receita menos calórica</button>
-                        </li>
-                        <li className="shadow-[0_3px_0px_0px_rgba(0,0,0,0.1)]">
-                            <button>Retorna mais calórica</button>
-                        </li>
-                        <li className="shadow-[0_3px_0px_0px_rgba(0,0,0,0.1)]">
-                            <button>Receita mais simples</button>
-                        </li>
-                        <li className="shadow-[0_3px_0px_0px_rgba(0,0,0,0.1)]">
-                            <button>Receita mais fácil</button>
-                        </li>
-                        <li className="shadow-[0_3px_0px_0px_rgba(0,0,0,0.1)]">
-                            <button>Dia menos calórico</button>
-                        </li>
-                        <li className="shadow-[0_3px_0px_0px_rgba(0,0,0,0.1)]">
-                            <button>Dia mais calórico</button>
-                        </li>
-                        <li>
-                            <button
-                                onClick={() => {
-                                    setData((prev) => ({
-                                        ...prev,
-                                        daySearch: !daySearch,
-                                    }));
-                                    setDaySearch(!daySearch);
-                                }}
-                            >
-                                Pesquisar dia
-                            </button>
-                        </li>
-                    </ul>
-                )}
-            </nav>
+            <button
+                className="flex items-center w-1/3 justify-end font-medium text-lg"
+                onClick={() => {
+                    setData((prev) => ({
+                        ...prev,
+                        daySearch: !daySearch,
+                    }));
+                    setDaySearch(!daySearch);
+                }}
+            >
+                {daySearch
+                    ? "Mostrar todas as receitas"
+                    : "Mostrar os menus diários"}
+            </button>
         </header>
     );
 }
