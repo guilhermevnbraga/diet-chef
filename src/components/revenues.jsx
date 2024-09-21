@@ -32,8 +32,8 @@ export default function Revenues({ data }) {
     }, []);
 
     useEffect(() => {
-        if (data.revenue) setRevenues(data.revenue)
-        if (data.menu) setMenu(data.menu)
+        if (data.revenue) setRevenues(data.revenue);
+        if (data.menu) setMenu(data.menu);
     }, [data]);
 
     const handleClick = (idx) => {
@@ -45,16 +45,26 @@ export default function Revenues({ data }) {
 
     return (
         <section className={`grid grid-cols-4 gap-4 w-full p-3`}>
-            {data.daySearch
-                ? menu.map((day, idx) => <Day day={day} idx={idx} key={idx} />)
-                : revenues.map((revenue, idx) => (
-                      <Revenue
-                          revenue={revenue}
-                          idx={idx}
-                          handleClick={handleClick}
-                          key={idx}
-                      />
-                  ))}
+            {data.daySearch ? (
+                menu.length > 0 ? (
+                    menu.map((day, idx) => (
+                        <Day day={day} idx={idx} key={idx} />
+                    ))
+                ) : (
+                    <Day />
+                )
+            ) : revenues.length > 0 ? (
+                revenues.map((revenue, idx) => (
+                    <Revenue
+                        revenue={revenue}
+                        idx={idx}
+                        handleClick={handleClick}
+                        key={idx}
+                    />
+                ))
+            ) : (
+                <Revenue />
+            )}
         </section>
     );
 }
