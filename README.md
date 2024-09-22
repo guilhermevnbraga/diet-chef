@@ -37,7 +37,13 @@ O **Diet Chef** é uma aplicação web front-end desenvolvida com **React.js** p
 
     Execute este comando tanto na pasta raiz desse projeto e da API.
 
-3. Rode a aplicação:
+3. Crie um arquivo .env na raiz da API e coloque o link do front-end (http://localhost:5173 por padrão):
+
+    ```bash
+    ORIGIN=http://localhost:5173
+    ```
+
+4. Rode a aplicação:
     ```bash
     npm start
     ```
