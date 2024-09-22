@@ -1,22 +1,19 @@
+import "../../styles/components/revenue/revenue.css";
+
 export default function Revenue({ revenue, idx, handleClick }) {
     if (revenue)
         return (
             <button
-                className="h-full flex"
+                className="revenue-button"
                 onClick={() => handleClick(idx)}
                 key={idx}
             >
-                <article
-                    key={revenue.id}
-                    className="bg-gray-200 p-4 text-left w-full"
-                >
-                    <h1 className="font-bold text-xl text-center mb-6">
-                        {revenue.name}
-                    </h1>
+                <article className="revenue-article">
+                    <h1 className="revenue-title">{revenue.name}</h1>
                     {revenue.open && (
                         <>
-                            <section className="text-sm mb-3">
-                                <h2 className="text-lg mb-1 font-medium">
+                            <section className="ingredients-section">
+                                <h2 className="ingredients-title">
                                     Ingredientes:
                                 </h2>
                                 {revenue.ingredients.map((ingredient, idx) => {
@@ -24,15 +21,17 @@ export default function Revenue({ revenue, idx, handleClick }) {
                                         idx ===
                                         revenue.ingredients.length - 1
                                     ) {
-                                        return <span>{`${ingredient}.`}</span>;
+                                        return (
+                                            <span
+                                                key={idx}
+                                            >{`${ingredient}.`}</span>
+                                        );
                                     }
-                                    return <p>{`${ingredient};`}</p>;
+                                    return <p key={idx}>{`${ingredient};`}</p>;
                                 })}
                             </section>
-                            <section className="text-sm mb-3">
-                                <h2 className="text-lg mb-1 font-medium">
-                                    Preparo:
-                                </h2>
+                            <section className="instructions-section">
+                                <h2 className="instructions-title">Preparo:</h2>
                                 {revenue.instructions.map(
                                     (instruction, idx) => {
                                         if (
@@ -40,17 +39,21 @@ export default function Revenue({ revenue, idx, handleClick }) {
                                             revenue.instructions.length - 1
                                         ) {
                                             return (
-                                                <span>{`${instruction}.`}</span>
+                                                <span
+                                                    key={idx}
+                                                >{`${instruction}.`}</span>
                                             );
                                         }
-                                        return <p>{`${instruction};`}</p>;
+                                        return (
+                                            <p key={idx}>{`${instruction};`}</p>
+                                        );
                                     }
                                 )}
                             </section>
                         </>
                     )}
-                    <p className="text-sm">{`Calorias: ${revenue.calories} Kcal`}</p>
-                    <p className="text-sm">{`Serve: ${
+                    <p className="calories">{`Calorias: ${revenue.calories} Kcal`}</p>
+                    <p className="servings">{`Serve: ${
                         revenue.servings > 1
                             ? `${revenue.servings} pessoas`
                             : `${revenue.servings} pessoa`
@@ -60,10 +63,8 @@ export default function Revenue({ revenue, idx, handleClick }) {
         );
 
     return (
-        <article className="bg-gray-200 p-4 text-left w-full">
-            <h1 className="font-bold text-xl text-center mb-6">
-                Nenhuma receita encontrada
-            </h1>
+        <article className="revenue-article">
+            <h1 className="revenue-title">Nenhuma receita encontrada</h1>
         </article>
     );
 }

@@ -1,0 +1,18 @@
+#higher-calorie-revenues {
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#revenues-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    padding: 0.75rem;
+}

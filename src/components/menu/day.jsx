@@ -1,12 +1,12 @@
+import "../../styles/components/menu/day.css";
+
 export default function Day({ day, idx }) {
     if (day)
         return (
-            <article key={idx} className="bg-gray-200 p-4 text-left w-full">
-                <h1 className="font-bold text-xl text-center mb-6">
-                    {day.day}
-                </h1>
-                <section className="mb-3 shadow-[0_3px_0_0_rgba(0,0,0,0.1)]">
-                    <h2 className="text-lg mb-1 font-medium">Café da manhã:</h2>
+            <article key={idx} className="day-article">
+                <h1 className="day-title">{day.day}</h1>
+                <section className="meal-section">
+                    <h2 className="meal-title">Café da manhã:</h2>
                     <p>{`Prato: ${day.meals.breakfast.name}`}</p>
                     <p>{`Calorias: ${day.meals.breakfast.calories} Kcal`}</p>
                     <p>{`Serve: ${
@@ -15,8 +15,8 @@ export default function Day({ day, idx }) {
                             : `${day.meals.breakfast.serving_size} pessoa`
                     }`}</p>
                 </section>
-                <section className="mb-3 shadow-[0_3px_0_0_rgba(0,0,0,0.1)]">
-                    <h2 className="text-lg mb-1 font-medium">Almoço:</h2>
+                <section className="meal-section">
+                    <h2 className="meal-title">Almoço:</h2>
                     <p>{`Prato: ${day.meals.lunch.name}`}</p>
                     <p>{`Calorias: ${day.meals.lunch.calories} Kcal`}</p>
                     <p>{`Serve: ${
@@ -26,7 +26,7 @@ export default function Day({ day, idx }) {
                     }`}</p>
                 </section>
                 <section>
-                    <h2 className="text-lg mb-1 font-medium">Jantar:</h2>
+                    <h2 className="meal-title">Jantar:</h2>
                     <p>{`Prato: ${day.meals.dinner.name}`}</p>
                     <p>{`Calorias: ${day.meals.dinner.calories} Kcal`}</p>
                     <p>{`Serve: ${
@@ -39,10 +39,8 @@ export default function Day({ day, idx }) {
         );
 
     return (
-        <article key={idx} className="bg-gray-200 p-4 text-left w-full">
-            <h1 className="font-bold text-xl text-center mb-6">
-                Dia inexistente
-            </h1>
+        <article key={idx} className="day-article">
+            <h1 className="day-title">Dia inexistente</h1>
         </article>
     );
 }

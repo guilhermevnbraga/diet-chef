@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Revenue from "./revenue";
+import "../../styles/components/revenue/higherCalorieRevenues.css";
 
 export default function LowerCalorieRevenues() {
     const [lowerCalorieRevenues, setLowerCalorieRevenues] = useState([]);
@@ -29,13 +30,11 @@ export default function LowerCalorieRevenues() {
     }, []);
 
     return (
-        <div className="mb-12">
-            <h1 className="font-bold text-5xl text-center mb-6">{`Receita${
+        <div id="lower-calorie-revenues">
+            <h1 className="title">{`Receita${
                 lowerCalorieRevenues.length > 1 ? "s" : ""
             } com menor quantidade de calorias`}</h1>
-            <section
-                className={`grid grid-flow-col grid-cols-4 gap-4 w-full p-3`}
-            >
+            <section id="revenues-grid">
                 {lowerCalorieRevenues.map((revenue, idx) => (
                     <Revenue
                         revenue={revenue}

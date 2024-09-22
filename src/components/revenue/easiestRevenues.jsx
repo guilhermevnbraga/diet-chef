@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Revenue from "./revenue";
+import "../../styles/components/revenue/easiestRevenues.css";
 
 export default function EasiestRevenues() {
     const [easiestRevenues, setEasiestRevenues] = useState([]);
@@ -29,13 +30,9 @@ export default function EasiestRevenues() {
     }, []);
 
     return (
-        <div className="mb-12">
-            <h1 className="font-bold text-5xl text-center mb-6">{`Receita${
-                easiestRevenues.length > 1 ? "s" : ""
-            } mais simples`}</h1>
-            <section
-                className={`grid grid-flow-col grid-cols-4 gap-4 w-full p-3`}
-            >
+        <div id="easiest-revenues">
+            <h1 className="title">{`Receita${easiestRevenues.length > 1 ? "s" : ""} mais simples`}</h1>
+            <section id="revenues-grid">
                 {easiestRevenues.map((revenue, idx) => (
                     <Revenue
                         revenue={revenue}

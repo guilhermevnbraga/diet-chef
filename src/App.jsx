@@ -7,13 +7,14 @@ import EasiestRevenues from "./components/revenue/easiestRevenues";
 import MostCalorieDays from "./components/menu/mostCalorieDays";
 import LessCalorieDays from "./components/menu/lessCalorieDays";
 import { useState } from "react";
+import "./styles/App.css";
 
 export default function App() {
     const [data, setData] = useState("");
 
     return (
         <>
-            <main className="min-h-screen flex flex-col">
+            <main id="main-container">
                 <Header setData={setData} />
                 <Revenues data={data} />
                 {data.daySearch ? (

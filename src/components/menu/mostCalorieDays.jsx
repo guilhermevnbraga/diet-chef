@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Day from "./day";
+import "../../styles/components/menu/mostCalorieDays.css";
 
 export default function MostCalorieDays() {
     const [mostCalorieDays, setMostCalorieDays] = useState([]);
@@ -21,13 +22,11 @@ export default function MostCalorieDays() {
     }, []);
 
     return (
-        <div className="mb-12">
-            <h1 className="font-bold text-5xl text-center mb-6">{`Dia${
+        <div className="most-calorie-days">
+            <h1 className="title">{`Dia${
                 mostCalorieDays.length > 1 ? "s" : ""
             } com maior quantidade de calorias`}</h1>
-            <section
-                className={`grid grid-flow-col grid-cols-4 gap-4 w-full p-3`}
-            >
+            <section className="grid-section">
                 {mostCalorieDays.map((day, idx) => (
                     <Day day={day} idx={idx} key={idx} />
                 ))}

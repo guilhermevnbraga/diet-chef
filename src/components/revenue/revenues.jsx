@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Revenue from "./revenue";
 import Day from "../menu/day";
+import "../../styles/components/revenue/revenues.css";
 
 export default function Revenues({ data }) {
     const [revenues, setRevenues] = useState([]);
@@ -44,11 +45,11 @@ export default function Revenues({ data }) {
     }, [data]);
 
     return (
-        <div className="mb-12">
-            <h1 className="font-bold text-5xl text-center mb-6">
+        <div id="revenues-container">
+            <h1 className="title">
                 {data.daySearch ? "Menu" : "Todas as Receitas"}
             </h1>
-            <section className="grid grid-cols-4 gap-4 w-full p-3">
+            <section id="revenues-grid">
                 {data.daySearch ? (
                     menu.length > 0 ? (
                         menu.map((day, idx) => (
